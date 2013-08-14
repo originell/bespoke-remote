@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Bespoke Remote - Presentation</title>
+</head>
+<body>
+    <script>
+        +function(presi) {
+            var socket = io.connect('/')
+            socket.on('established', function() {
+                console.log('Connection established.')
+            })
+
+            // Presentation Remote Control
+            socket.on('nextSlide', function() {
+                 presi.next()
+            })
+            socket.on('prevSlide', function() {
+                 presi.prev()
+            })
+        }(window.presentation)
+    </script>
+</body>
+</html>
